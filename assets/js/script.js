@@ -166,4 +166,10 @@ document
 continueBtnEl.addEventListener("click", showMainPage);
 // submitBntEl.addEventListener("submit", nameInput);
 
-///figure out why it tries to run the apis when you click anywhere
+// add a clear modal/ls button
+var clearStorage = function () {
+  photosContainer.innerHTML = "";
+  localStorage.clear();
+  location.reload();
+};
+document.getElementById("not-me").addEventListener("click", clearStorage);
