@@ -83,7 +83,11 @@ function gatherInput() {
   //get categories
 }
 
-// will make modal disapear and show main page
+// //  FETCH IMAGES FROM PEXEL
+var API_KEY = "563492ad6f9170000100000152ffb040725b4fec8924b778c7fa6b04";
+var url = "https://api.pexels.com/v1/search";
+// var category = "";
+
 function showMainPage() {
   gatherInput();
   introModalEl.classList = "noDisplay";
