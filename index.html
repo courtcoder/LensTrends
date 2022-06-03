@@ -35,21 +35,26 @@
           <p class="modal-card-title title is-size-2">Hello Welcome to Lens Trends</p>
         </header>
         <section class="modal-card-body">
-          <h1 class="title is-size-4">What's your name?</h1>
-          <div class="columns">
-            <input id="input-bar" class="input is-success is-medium is-rounded input-bar mr-1 column" type="text" name="enter-name" placeholder="First Name" required>
-            <button id="submit-name" class="button is-success is-medium column is-one-fifth" type="submit">Submit</button>
+          <div id="name-holder">
+            <h1 id="nameTitle" class="title is-size-4">What's your name?</h1>
+            <div id="name-bar" class="columns">
+              <input id="input-bar" class="input is-success is-medium is-rounded input-bar mr-1 column" type="text" name="enter-name" placeholder="First Name" required>
+              <!-- <button id="submit-name" class="button is-success is-medium column is-one-fifth" type="submit">Submit</button> -->
+            </div>
           </div>
       <!-- Subtitle -->
           <h2 class="title is-size-4 mt-2 mb-2">Please choose some categories that you are interested in...</h2>
       <!-- Buttons -->
-          <div class="field is-centered">
-              <button class="button  is-success is-medium m-2">Food</button>
-              <button class="button  is-success is-medium m-2">Music</button>
-              <button class="button  is-success is-medium m-2">Animals</button>
-              <button class="button  is-success is-medium m-2">Sports</button>
-              <button class="button  is-success is-medium m-2">Movies</button>
-          </div>
+          <form class="field is-centered">
+              <input type="checkbox" id="music" name="preference1" value="music" />
+              <label for="music">Music</label><br />
+              <input type="checkbox" id="animals" name="preference2" value="animals" />
+              <label for="animals">Animals</label><br />
+              <input type="checkbox" id="sports" name="preference3" value="sports" />
+              <label for="sports">Sports</label><br />
+              <input type="checkbox" id="movies" name="preference4" value="movies" />
+              <label for="movies">Movies</label>
+          </form>
           <button id="continue-btn" class="button mt-5 is-success continue-btn is-flex-wrap-wrap">Continue</button>
       </div>
     </modal>
@@ -57,7 +62,7 @@
 
 <!-- main page code -->
       
-    <body>
+    <main>
     <section id="main-page"> 
           <section class="hero is-info is-medium has-background-black">
               <div class="hero-head">
@@ -116,20 +121,8 @@
                 <h1 class="subtitle mt-4">
                   These are the categories that you have selected:
                 </h1>
-                <div class="buttons are-medium is-centered mb-5">
-                  <button class="button btn1 change-category-btn " id="music-btn" value="music">
-                    MUSIC</button>
-              
-                  <button class="button btn1 change-category-btn" id="books-btn" value="books"> BOOKS
-                  </button>
-                  <button class="button btn1 change-category-btn" id="travel-btn"
-                    value="travel btn1 change-category-btn">TRAVEL</button>
-                  <button class="button btn1 change-category-btn" id="sports-btn"
-                    value="sports btn1 change-category-btn">SPORTS</button>
-                  <button class="button btn1 change-category-btn" id="nature-btn"
-                    value="nature btn1 change-category-btn">NATURE</button>
-
-                    </div>
+                <!-- //add in selected categories list  -->
+<div id="categoriesInput"></div>
                     
                     
 
@@ -142,9 +135,23 @@
                 <input type="text" class="search-input">
                   <div class="button searchbtn">SEARCH</div>
 
-
+                      <button class="button clearOutPhotos" id="clearOutPhotos-btn">Clear Photos</button>
 
                   <h2 class="sub-header"> CATEGORIES </h2>
+                                  <div class="buttons are-medium is-centered mb-5">
+                  <button class="button btn1 change-category-btn " id="music-btn">
+                    MUSIC</button>
+              
+                  <button class="button btn1 change-category-btn" id="books-btn"> BOOKS
+                  </button>
+                  <button class="button btn1 change-category-btn" id="travel-btn"
+                   >TRAVEL</button>
+                  <button class="button btn1 change-category-btn" id="sports-btn"
+                   >SPORTS</button>
+                  <button class="button btn1 change-category-btn" id="nature-btn"
+                    >NATURE</button>
+
+                    </div>
                   <div class="buttons are-medium is-centered">
                       <button class="button change-category-btn" id="dance-btn"
                       value="dance change-category-btn">DANCE</button>
@@ -178,7 +185,7 @@
               </div>
           </div>
 
-
+        </main>
 
 
 
