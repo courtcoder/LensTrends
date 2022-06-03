@@ -1,78 +1,44 @@
-// modal code
-var introModalEl=document.querySelector("#introModal");
-var mainPageEl=document.querySelector("#main-page");
-var continueBtnEl=document.querySelector("#continue-btn");
-var inputBarEl=document.querySelector("#input-bar");
-var submitBntEl=document.querySelector("#submit-name");
-
-// will show modal
-window.onload=function () {
-    introModalEl.classList="display";
-    mainPageEl.classList="noDisplay";
+* {
+    font-family: Lobster;
 }
 
-;
-
-// will make modal disapear and show main page
-function showMainPage() {
-    introModalEl.classList="noDisplay";
-    mainPageEl.classList="display";
+:root {
+    --black: black;
+    --green: #02753c;
+    --purple: #630150;
+    --grey: #242625;
+    --white: --white
 }
 
-function nameInput() {
-    const setName=inputBarEl.value;
-    localStorage.setItem("USER", JSON.stringify(setName));
-    console.log(setName);
+
+/* Code to display modal on and off  */
+.display {
+    display: block;
 }
 
-function pullImages() {
-    // ACCESS TO URL
-    var queryParams="?query="+category;
-    var finalURL=url+queryParams;
-    console.log(finalURL);
-
-    fetch(finalURL, {
-        headers: {
-            Authorization: API_KEY,
-        }
-
-        ,
-    }) .then(function (response) {
-        return response.json();
-
-    }) .then(function (data) {
-        console.log(data);
-        // data.photos
-        photosContainer.innerHTML="";
-
-        for (let i=0; i < data.photos.length; i++) {
-            const photo=data.photos[i];
-            console.log(photo);
-            var imageElement=document.createElement("img");
-            imageElement.src=photo.src.small;
-            imageElement.classList.add("photo");
-            console.log(photo.src.original);
-            photosContainer.appendChild(imageElement);
-        }
-    });
+.noDisplay {
+    display: none;
 }
 
-var musicCatBtn=document.querySelector("#music-btn");
-musicCatBtn.addEventListener("click", setCat);
-var booksCatBtn=document.querySelector("#books-btn");
-booksCatBtn.addEventListener("click", setCat);
-var travelCatBtn=document.querySelector("#travel-btn");
-travelCatBtn.addEventListener("click", setCat);
-var sportsCatBtn=document.querySelector("#sports-btn");
-sportsCatBtn=addEventListener("click", setCat);
-var natureCatBtn=document.querySelector("#nature-btn");
-natureCatBtn=addEventListener("click", setCat);
-var photosContainer=document.querySelector("#photos-container");
+.m-title {
+    font-family: 'Roboto Slab', serif;
 
-function setCat(evt) {
-    category=evt.target.value;
-    pullImages();
 }
 
-continueBtnEl.addEventListener("click", showMainPage);
-submitBntEl.addEventListener("click", nameInput);
+.modal {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -150px;
+    margin-top: -150px;
+}
+
+.continue-btn {
+    width: 200px;
+    background-color: #fdbf02;
+    color: #626567;
+    border-color: #626567;
+    margin-left: 400px;
+    position: relative;
+
+}
