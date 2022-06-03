@@ -149,10 +149,8 @@ function pullImages(category) {
       }
     });
 }
-
+var cbCont = document.getElementById("category-btns-container");
 var createCatBtns = function () {
-  var cbCont = document.getElementById("category-btns-container");
-
   for (var i = 0; i < catsOptions.length; i++) {
     var catBtn = document.createElement("button");
     catBtn.classList = "button btn1 change-category-btn ";
@@ -195,12 +193,10 @@ photosContainer.addEventListener("click", function (event) {
   infoContainer.append(infoCreator);
 });
 
-var setCat = function (evt) {
-  if (evt.target.classList.contains("change-category-btn")) {
-    category = evt.target.value;
-    pullImages(category);
-  }
-};
+cbCont.addEventListener("click", function (evt) {
+  category = evt.target.value;
+  pullImages(category);
+});
 
 // add a clear results button
 var clearPhotos = function () {
