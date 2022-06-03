@@ -29,7 +29,7 @@ if (LSpastUsers) {
 
 function nameInput() {
   const setName = inputBarEl.value;
-
+//get User name and preference selections
   localStorage.setItem("USER", JSON.stringify(setName));
   console.log(setName);
 }
