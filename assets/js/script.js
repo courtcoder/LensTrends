@@ -8,6 +8,14 @@ var submitBntEl = document.querySelector("#submit-name");
 //variables
 var photosContainer = document.getElementById("photos-container");
 
+// // search button
+const searchbtn = document.querySelector(".searchbtn");
+const input = document.querySelector("input");
+inputBarEl.addEventListener("input", (e) => {
+  e.preventDefault();
+  query = e.target.value;
+});
+
 // get answers Array from local storage
 var pastUsers = [];
 var newUser;
@@ -132,6 +140,9 @@ function pullImages(category) {
         console.log(photo);
         var imageElement = document.createElement("img");
         imageElement.src = photo.src.large;
+        imageElement.setAttribute("id", photo.id);
+        imageElement.setAttribute("name", photo.photographer);
+        imageElement.setAttribute("value", photo.alt);
         imageElement.classList.add("photo");
         console.log(photo.src.original);
         photosContainer.appendChild(imageElement);
@@ -142,21 +153,54 @@ function pullImages(category) {
 var createCatBtns = function () {
   var cbCont = document.getElementById("category-btns-container");
 
-  <button class="button btn1 change-category-btn " id="music-btn">
-    MUSIC
-  </button>;
   for (var i = 0; i < catsOptions.length; i++) {
     var catBtn = document.createElement("button");
     catBtn.classList = "button btn1 change-category-btn ";
     catBtn.setAttribute("id", catsOptions[i] + "-btn");
+    catBtn.setAttribute("value", catsOptions[i]);
+    catBtn.innerHTML = catsOptions[i];
     cbCont.appendChild(catBtn);
   }
 };
 
-function setCat(evt) {
-  category = evt.target.value;
-  pullImages(category);
-}
+photosContainer.addEventListener("click", function (event) {
+  q = [event.target.id];
+  console.log(q);
+  var photoPick = document.getElementById(q);
+  console.log(photoPick);
+  console.log(photoPick.getAttribute("src"));
+  var infoURLtext = photoPick.getAttribute("src");
+  var infocreatorText = photoPick.getAttribute("name");
+  var infoAltText = photoPick.getAttribute("value");
+  var infoContainer = document.getElementById("selected-photo-info");
+  infoContainer.innerHTML = "";
+  var infoURL = document.createElement("div");
+  var infoAlt = document.createElement("div");
+  var infoCreator = document.createElement("div");
+  //add classes for styling
+  infoURL.classList = "image-info";
+  infoAlt.classList = "image-info";
+  infoCreator.classList = "image-info";
+  infoCreator.setAttribute("id", "infoURL");
+  infoURL.setAttribute("id", "infoURL");
+  infoAlt.setAttribute("id", "infoAlt");
+  infoURL.setAttribute("style", "color:white");
+  infoAlt.setAttribute("style", "color:white");
+  infoCreator.setAttribute("style", "color:white");
+  infoURL.innerHTML = "Source URL: " + infoURLtext;
+  infoAlt.innerHTML = "Alt Text: " + infoAltText;
+  infoCreator.innerHTML = "Photographer: " + infocreatorText;
+  infoContainer.append(infoURL);
+  infoContainer.append(infoAlt);
+  infoContainer.append(infoCreator);
+});
+
+var setCat = function (evt) {
+  if (evt.target.classList.contains("change-category-btn")) {
+    category = evt.target.value;
+    pullImages(category);
+  }
+};
 
 // add a clear results button
 var clearPhotos = function () {
