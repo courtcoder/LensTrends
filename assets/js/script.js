@@ -22,6 +22,8 @@ if (LSpastUsers) {
 var userName;
 var startCats = [];
 
+//list all category options for checkbox/buttons
+var catsOptions = ["music", "animals", "sports", "movies"];
 // will show modal
 window.onload = function () {
   introModalEl.classList = "display";
@@ -59,9 +61,7 @@ function gatherInput() {
     pastUsers[0] = setName;
   }
   //get checkbox answers //if checked then true, else false
-  // console.log(musicCB.checked);
 
-  var catsOptions = ["music", "animals", "sports", "movies"];
   for (var c = 0; c < catsOptions.length; c++) {
     cc = c + 1;
     console.log(cc);
@@ -92,6 +92,7 @@ function showMainPage() {
   gatherInput();
   introModalEl.classList = "noDisplay";
   mainPageEl.classList = "display";
+  createCatBtns();
   startPullImages();
 }
 
@@ -138,17 +139,19 @@ function pullImages(category) {
     });
 }
 
-// var musicCatBtn = document.querySelector("#music-btn");
-// musicCatBtn.addEventListener("click", setCat);
-// var booksCatBtn = document.querySelector("#books-btn");
-// booksCatBtn.addEventListener("click", setCat);
-// var travelCatBtn = document.querySelector("#travel-btn");
-// travelCatBtn.addEventListener("click", setCat);
-// var sportsCatBtn = document.querySelector("#sports-btn");
-// sportsCatBtn = addEventListener("click", setCat);
-// var natureCatBtn = document.querySelector("#nature-btn");
-// natureCatBtn = addEventListener("click", setCat);
-// var photosContainer = document.querySelector("#photos-container");
+var createCatBtns = function () {
+  var cbCont = document.getElementById("category-btns-container");
+
+  <button class="button btn1 change-category-btn " id="music-btn">
+    MUSIC
+  </button>;
+  for (var i = 0; i < catsOptions.length; i++) {
+    var catBtn = document.createElement("button");
+    catBtn.classList = "button btn1 change-category-btn ";
+    catBtn.setAttribute("id", catsOptions[i] + "-btn");
+    cbCont.appendChild(catBtn);
+  }
+};
 
 function setCat(evt) {
   category = evt.target.value;
