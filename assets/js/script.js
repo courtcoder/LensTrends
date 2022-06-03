@@ -17,8 +17,19 @@ function showMainPage() {
   mainPageEl.classList = "display";
 }
 
+//variable for user array containing objects for recall
+var pastUsers = [];
+// get answers Array from local storage
+var LSpastUsers = JSON.parse(localStorage.getItem("pastUsers"));
+if (LSpastUsers) {
+  pastUsers = LSpastUsers;
+} else {
+  pastUsers = [];
+}
+
 function nameInput() {
   const setName = inputBarEl.value;
+
   localStorage.setItem("USER", JSON.stringify(setName));
   console.log(setName);
 }
