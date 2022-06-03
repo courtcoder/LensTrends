@@ -5,6 +5,9 @@ var continueBtnEl = document.querySelector("#continue-btn");
 var inputBarEl = document.querySelector("#input-bar");
 var submitBntEl = document.querySelector("#submit-name");
 
+//variables
+var photosContainer = document.getElementById("photos-container");
+
 // get answers Array from local storage
 var pastUsers = [];
 var newUser;
