@@ -7,6 +7,10 @@ var submitBntEl = document.querySelector("#submit-name");
 
 //variables
 var photosContainer = document.getElementById("photos-container");
+var formContainer = document.getElementById("form-container");
+
+//list all category options for checkbox/buttons
+var catsOptions = ["music", "animals", "sports", "movies"];
 
 // // search button
 const searchbtn = document.querySelector(".searchbtn");
@@ -30,15 +34,38 @@ if (LSpastUsers) {
 var userName;
 var startCats = [];
 
-//list all category options for checkbox/buttons
-var catsOptions = ["music", "animals", "sports", "movies"];
 // will show modal
 window.onload = function () {
   introModalEl.classList = "display";
   mainPageEl.classList = "noDisplay";
+  modalCheckboxes();
   if (newUser) {
   } else {
     modalPopulate();
+  }
+};
+
+var modalCheckboxes = function () {
+  for (var c = 0; c < catsOptions.length; c++) {
+    cc = c + 1;
+    console.log(cc);
+    var inputLine = document.createElement("div");
+    var checkbox = document.createElement("input");
+    var labelCheckbox = document.createElement("label");
+    var linebreak = document.createElement("br");
+    checkbox.setAttribute("name", "preference" + cc);
+    checkbox.setAttribute("type", "checkbox");
+    checkbox.setAttribute("id", catsOptions[c]);
+    checkbox.setAttribute("value", catsOptions[c]);
+    //or can add classes for styling it
+    // inputLine.setAttribute("style", "display:inline-flex");
+    labelCheckbox.setAttribute("for", catsOptions[c]);
+    labelCheckbox.textContent = catsOptions[c];
+
+    inputLine.appendChild(checkbox);
+    inputLine.appendChild(labelCheckbox);
+    formContainer.appendChild(inputLine);
+    formContainer.appendChild(linebreak);
   }
 };
 
