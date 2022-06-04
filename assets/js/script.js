@@ -14,11 +14,12 @@ var catsOptions = ["music", "animals", "sports", "movies"];
 
 // // search button
 const searchbtn = document.querySelector(".searchbtn");
-const input = document.querySelector("input");
-inputBarEl.addEventListener("input", (e) => {
-  e.preventDefault();
-  query = e.target.value;
-});
+
+// const input = document.querySelector("input");
+// inputBarEl.addEventListener("input", (e) => {
+//   e.preventDefault();
+//   query = e.target.value;
+// });
 
 // get answers Array from local storage
 var pastUsers = [];
@@ -243,3 +244,10 @@ var clearStorage = function () {
   location.reload();
 };
 document.getElementById("not-me").addEventListener("click", clearStorage);
+
+var searchbtnfunc = function () {
+  var searchInput = document.querySelector(".search-input");
+  category = searchInput.value;
+  pullImages(category);
+};
+searchbtn.addEventListener("click", searchbtnfunc);
