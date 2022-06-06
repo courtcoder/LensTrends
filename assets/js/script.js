@@ -10,7 +10,16 @@ var photosContainer = document.getElementById("photos-container");
 var formContainer = document.getElementById("form-container");
 
 //list all category options for checkbox/buttons
-var catsOptions = ["music", "animals", "sports", "movies"];
+var catsOptions = [
+  "music",
+  "animals",
+  "sports",
+  "movies",
+  "kids",
+  "vacation",
+  "holiday",
+  "nature",
+];
 
 // // search button
 const searchbtn = document.querySelector(".searchbtn");
@@ -59,7 +68,7 @@ var modalCheckboxes = function () {
     checkbox.setAttribute("id", catsOptions[c]);
     checkbox.setAttribute("value", catsOptions[c]);
     //or can add classes for styling it
-    // inputLine.setAttribute("style", "display:inline-flex");
+    inputLine.setAttribute("style", "padding:20px;");
     labelCheckbox.setAttribute("for", catsOptions[c]);
     labelCheckbox.textContent = catsOptions[c];
 
@@ -180,12 +189,14 @@ function pullImages(category) {
 var cbCont = document.getElementById("category-btns-container");
 var createCatBtns = function () {
   for (var i = 0; i < catsOptions.length; i++) {
+    var btnBox = document.createElement("div");
     var catBtn = document.createElement("button");
     catBtn.classList = "button btn1 change-category-btn ";
     catBtn.setAttribute("id", catsOptions[i] + "-btn");
     catBtn.setAttribute("value", catsOptions[i]);
     catBtn.innerHTML = catsOptions[i];
-    cbCont.appendChild(catBtn);
+    btnBox.appendChild(catBtn);
+    cbCont.appendChild(btnBox);
   }
 };
 
@@ -251,3 +262,36 @@ var searchbtnfunc = function () {
   pullImages(category);
 };
 searchbtn.addEventListener("click", searchbtnfunc);
+
+//second api with famous quotes
+var factsFunc = function () {
+  //API to collect an advice slip
+  var apiLocUrl = "https://api.api-ninjas.com/v1/facts?limit=1";
+
+  fetch(apiLocUrl, {
+    headers: {
+      "X-Api-Key": "a8hifqhtb46evIGIS1vf8g==VKBgu6AQ2bQT5Gec",
+    },
+  })
+    .then(function (response) {
+      // if request was successful
+      console.log(response);
+      if (response.ok) {
+        response.json().then(function (otherData) {
+          console.log(otherData);
+          var factsBox = document.getElementById("factsBox");
+          factsBox.setAttribute("style", "max-width:150px");
+          // factsBox.innerHTML = "";
+          var factoid = otherData[0].fact;
+          console.log(factoid);
+          factsBox.innerHTML = factoid;
+        });
+      } else {
+        alert("Error: fact api Not Found");
+      }
+    })
+    .catch(function (error) {
+      alert("Unable to connect to fact api");
+    });
+};
+factsFunc();

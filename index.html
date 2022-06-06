@@ -45,7 +45,7 @@
       <!-- Subtitle -->
           <h2 class="title is-size-4 mt-2 mb-2">Please choose some categories that you are interested in...</h2>
       <!-- Buttons -->
-          <form id = "form-container" class="field is-centered">
+          <form id = "form-container" class="field is-centered is-flex">
               <!-- <input type="checkbox" id="music" name="preference1" value="music" />
               <label for="music">Music</label><br />
               <input type="checkbox" id="animals" name="preference2" value="animals" />
@@ -132,16 +132,18 @@
                 <!-- Columns -->
           <div class="columns has-background-black is-centered">
               <!-- Left -->
-              <div class="column is-one-third ml-8">
+              <div class="columnis-one-third ml-8">
+
+                <h2 class="sub-header">  </h2>
 
                 <h2 class="sub-header"> SEARCH </h2>
                 <input type="text" class="search-input">
                   <div class="button searchbtn">SEARCH</div>
 
                       <button class="button clearOutPhotos" id="clearOutPhotos-btn">Clear Photos</button>
-
-                  <h2 class="sub-header"> CATEGORIES </h2>
-              <div class="buttons are-medium is-centered mb-5" id="category-btns-container">
+<div class="is-block" id = "button-list">
+                  <h2 class="sub-header" > CATEGORIES </h2>
+              <div class="buttons are-medium is-centered mb-5 is-block" id="category-btns-container" >
                   <!-- <button class="button btn1 change-category-btn " id="music-btn">
                     MUSIC</button>
               
@@ -168,8 +170,15 @@
                       value="beach change-category-btn">BEACH</button>
 
                   </div> -->
-                  
-              </div>
+                  <!-- was missing a close div here  -->
+              </div></div>
+<div class="box border is-flex-wrap-wrap" id="factsCont">
+  <div class = "is-center is-flex-wrap-wrap" id = "factsBox">
+fun fact here
+  </div>
+</div>
+
+            </div>
               <!-- Right -->
               <div class="column is-four-sixths mr-7 mt-7">
                 <div id="selected-photo-info"></div>
@@ -207,6 +216,7 @@
                     </footer>
           </section>
     </section>
+<!-- <script-->
 
     <!-- LANDING -->
 
